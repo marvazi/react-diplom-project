@@ -1,33 +1,39 @@
-import React, { useContext, useEffect, useState } from 'react';
-
+import React, { useContext, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
+import { fetchPizzas } from '../redux/slices/pizzasSlice';
+import { AppContext } from '../App';
+import { Link } from 'react-router-dom';
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
 import Sort from '../components/Sort';
 import Pagination from '../Pagination';
-import { AppContext } from '../App';
 
 const Home = () => {
-  const { searchValue } = useContext(AppContext);
-  const [items, setItems] = useState([]);
-  const [categoryId, setCategoryId] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [sortType, setSortType] = useState({
-    name: 'популярности',
-    sort: 'rating',
-  });
+  const categoryId = useSelector((state) => state.filterSlice.categoryId);
+  const sortType = useSelector((state) => state.filterSlice.sortType);
+  const currentPage = useSelector((state) => state.filterSlice.currentPage);
+  const items = useSelector((state) => state.pizzaSlice.items);
+  const dispatch = useDispatch();
 
+  const { searchValue } = useContext(AppContext);
+  // const [items, setItems] = useState([]);
+
+  const onClickCategory = (i) => {
+    dispatch(setCategoryId(i));
+  };
+  const onChangePage = (num) => {
+    dispatch(setCurrentPage(num));
+  };
+  const getPizzas = async () => {
+    try {
+      dispatch(fetchPizzas({ categoryId, sortType, currentPage }));
+    } catch (error) {
+      alert('Упс, что то пошло не так');
+    }
+  };
   useEffect(() => {
-    fetch(
-      `https://63f7d02173bce6c4497652d6.mockapi.io/items-pizzas?page=${currentPage}&limit=4&${
-        categoryId > 0 ? `category=${categoryId}` : ''
-      }$&sortBy=${sortType.sort}&order=desc`
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((arr) => {
-        setItems(arr);
-      });
+    getPizzas();
     window.scrollTo(0, 0);
   }, [categoryId, sortType, currentPage]);
 
@@ -38,20 +44,21 @@ const Home = () => {
       }
       return false;
     })
-    .map((obj) => <PizzaBlock key={obj.id} {...obj} />);
+    .map((obj) => (
+      <Link key={obj.id} to={`/pizza/${obj.id}`}>
+        <PizzaBlock {...obj} />
+      </Link>
+    ));
   return (
     <>
       <div className="container">
         <div className="content__top">
-          <Categories
-            value={categoryId}
-            onClickCategory={(index) => setCategoryId(index)}
-          />
-          <Sort value={sortType} onChangeSort={(index) => setSortType(index)} />
+          <Categories value={categoryId} onClickCategory={onClickCategory} />
+          <Sort />
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">{pizzas}</div>
-        <Pagination onChangePage={(num) => setCurrentPage(num)} />
+        <Pagination onChangePage={onChangePage} />
       </div>
     </>
   );

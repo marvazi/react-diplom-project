@@ -1,18 +1,36 @@
-import React, { useContext } from 'react';
-import styles from './search.module.scss';
+import React, { useContext, useRef } from 'react';
 import { AppContext } from '../../App';
-const Search = () => {
-  const { searchValue, setSearchValue } = useContext(AppContext);
+import debounce from 'lodash.debounce';
+import styles from './search.module.scss';
+import { useCallback } from 'react';
+import { useState } from 'react';
 
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
+const Search = () => {
+  const [value, setValue] = useState('');
+  const { setSearchValue } = useContext(AppContext);
+  const inputRef = useRef();
+
+  const onChangeInput = (e) => {
+    setValue(e.target.value);
+    updateSearchValue(e.target.value);
   };
 
+  const onClickClear = () => {
+    setSearchValue('');
+    setValue('');
+    inputRef.current.focus();
+  };
+  const updateSearchValue = useCallback(
+    debounce((value) => {
+      setSearchValue(value);
+    }, 1000),
+    []
+  );
   return (
     <div className={styles.root}>
       <svg
         className={styles.icon}
-        enable-background="new 0 0 32 32"
+        enableBackground="new 0 0 32 32"
         id="EditableLine"
         version="1.1"
         viewBox="0 0 32 32"
@@ -25,19 +43,19 @@ const Search = () => {
           id="XMLID_42_"
           r="9"
           stroke="#000000"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+          strokeWidth="2"
         ></circle>
         <line
           fill="none"
           id="XMLID_44_"
           stroke="#000000"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+          strokeWidth="2"
           x1="27"
           x2="20.366"
           y1="27"
@@ -45,15 +63,16 @@ const Search = () => {
         ></line>
       </svg>
       <input
-        value={searchValue}
-        onChange={handleChange}
+        ref={inputRef}
+        value={value}
+        onChange={onChangeInput}
         className={styles.input}
         type="text"
         placeholder="Поиск пиццы..."
       />
-      {searchValue && (
+      {value && (
         <svg
-          onClick={() => setSearchValue('')}
+          onClick={onClickClear}
           className={styles.clearIcon}
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
