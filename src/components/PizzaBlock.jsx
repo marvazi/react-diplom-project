@@ -20,8 +20,6 @@ const PizzaBlock = ({ id, title, price, imageUrl, sizes, types }) => {
       title,
       imageUrl,
       price,
-      type: typeNames[activeType],
-      sizes: sizes[selected],
     };
     dispatch(addItem(item));
   };
@@ -31,30 +29,7 @@ const PizzaBlock = ({ id, title, price, imageUrl, sizes, types }) => {
       <div className="pizza-block">
         <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
         <h4 className="pizza-block__title">{title}</h4>
-        <div className="pizza-block__selector">
-          <ul>
-            {types.map((type, index) => (
-              <li
-                key={index}
-                onClick={() => setActiveType(index)}
-                className={activeType === index ? 'active' : ''}
-              >
-                {typeNames[type]}
-              </li>
-            ))}
-          </ul>
-          <ul>
-            {sizes.map((value, index) => (
-              <li
-                key={index}
-                onClick={() => setSelected(index)}
-                className={selected === index ? 'active' : ''}
-              >
-                {value} см.
-              </li>
-            ))}
-          </ul>
-        </div>
+        <div className="pizza-block__selector"></div>
         <div className="pizza-block__bottom">
           <div className="pizza-block__price">от {price} ₽</div>
           <button

@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 const Categories = ({ value, onClickCategory }) => {
   const categories = [
     'Все',
-    'Мясные',
-    'Вегетарианская',
-    'Гриль',
-    'Острые',
-    'Закрытые',
+    'Ручной',
+    'Электростартер',
+    'Румпленное',
+    'Дистанционное',
+    'Комбинированные',
   ];
 
   return (

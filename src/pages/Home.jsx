@@ -44,11 +44,7 @@ const Home = () => {
       }
       return false;
     })
-    .map((obj) => (
-      <Link key={obj.id} to={`/pizza/${obj.id}`}>
-        <PizzaBlock {...obj} />
-      </Link>
-    ));
+    .map((obj) => <PizzaBlock {...obj} />);
   return (
     <>
       <div className="container">
@@ -56,7 +52,7 @@ const Home = () => {
           <Categories value={categoryId} onClickCategory={onClickCategory} />
           <Sort />
         </div>
-        <h2 className="content__title">Все пиццы</h2>
+        <h2 className="content__title">Все моторы</h2>
         <div className="content__items">{pizzas}</div>
         <Pagination onChangePage={onChangePage} />
       </div>

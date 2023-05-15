@@ -1,0 +1,82 @@
+[
+  {
+    "id": 0,
+    "imageUrl": "https://vodomotorika.ru/userfiles/shop_items/5658/m_lodochnyi_motor_hdx_t_3_6_sbms_r-series_3_6_l_s__dvuxtaktnyi.jpg",
+    "title": "ALLFA CG T9.9 MAX",
+    "price": 128900,
+    "category": 0,
+    "rating": 4
+  },
+  {
+    "id": 1,
+    "imageUrl": "https://vodomotorika.ru/userfiles/shop_items/4702/m_lodochnyi_motor_golfstream_t3_6bms_3_6_l_s__dvuxtaktnyi.jpg",
+    "title": "TOYAMA T5BMS",
+    "price": 66100,
+    "category": 0,
+    "rating": 6
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://vodomotorika.ru/userfiles/shop_items/10606/m_lodochnyi_motor_hidea_hdef40fel-t.jpg",
+    "title": "  HDX T 6.2 BMS R-Series",
+    "price": 116400,
+    "category": 1,
+    "rating": 4
+  },
+  {
+    "id": 3,
+    "imageUrl": "https://vodomotorika.ru/userfiles/shop_items/10676/m_lodochnyi_motor_hdx_t_6_2_bms_.jpg",
+    "title": " HDX T 5.2 BMS B-Series",
+    "price": 105300,
+    "category": 2,
+    "rating": 2
+  },
+  {
+    "id": 4,
+    "imageUrl": "https://vodomotorika.ru/userfiles/shop_items/7048/m_lodochnyi_motor_toyama_tm2_6ts_2_6_l_s__dvuxtaktnyi.jpg",
+    "title": " TOYAMA TM2.6TS",
+    "price": 27700,
+    "category": 3,
+    "rating": 8
+  },
+  {
+    "id": 5,
+    "imageUrl": "https://vodomotorika.ru/userfiles/shop_items/10604/m_lodochnyi_motor_hidea_hdf5hs_(_s_bakom_)_5_l_s__chetyrextaktnyi.jpg",
+    "title": " HIDEA HD4FHS 4",
+    "price": 115000,
+    "category": 2,
+    "rating": 2
+  },
+  {
+    "id": 6,
+    "imageUrl": "https://vodomotorika.ru/userfiles/shop_items/10817/m_lodochnyi_motor_hidea_hd4fhl_4_l_s__dvuxtaktnyi-3.jpg",
+    "title": " HIDEA HDF5HL ( с баком )",
+    "price": 180900,
+    "category": 1,
+    "rating": 9
+  },
+  {
+    "id": 7,
+    "imageUrl": "https://vodomotorika.ru/userfiles/shop_items/4241/m_lodochnyi_motor_hidea_hdf9_9hs_9_9_l_s__chetyrextaktnyi.jpg",
+    "title": " HIDEA HD4FHS ",
+    "price": 154300,
+    "category": 4,
+    "rating": 10
+  },
+  {
+    "id": 8,
+    "imageUrl": "https://vodomotorika.ru/userfiles/shop_items/5659/m_lodochnyi_motor_hdx_t_9,8_bms_r-series_9_8_l_s__dvuxtaktnyi(1).jpg",
+    "title": " HDX T 15 BMS R-Series",
+    "price": 119200,
+    "category": 5,
+    "rating": 10
+  },
+  {
+    "id": 9,
+    "imageUrl": "https://vodomotorika.ru/userfiles/shop_items/5660/m_lodochnyi_motor_hdx_t_9,9_bms_r-series_9_9_l_s__dvuxtaktnyi(1).jpg",
+    "title": " HDX T 3.6 СBMS R-Series",
+    "price": 280000,
+    "category": 5,
+    "rating": 7
+  }
+]
