@@ -9,6 +9,8 @@ import NotFound from './pages/NotFound';
 import { Route, Routes } from 'react-router-dom';
 import { createContext } from 'react';
 import FullPizza from './pages/FullPizza';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
 export const AppContext = createContext();
 
@@ -23,7 +25,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/cart" element={<Cart />} />
-
+              <Route path="/reg" element={<RegisterPage />}></Route>
+              <Route path="/login" element={<LoginPage />}></Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

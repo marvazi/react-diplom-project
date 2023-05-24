@@ -1,17 +1,21 @@
 import React from 'react';
 import Logo from '../assets/img/pizza-logo.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import Search from './Search';
 import { selectCart } from '../redux/slices/cartSlice';
-
+import useAuth from '../hooks/useAuth';
+import { removeUser } from '../redux/slices/userSlice';
+import { CiLogout } from 'react-icons/ci';
 const Header = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const { items } = useSelector(selectCart);
   const totalItem = items.reduce((sum, item) => sum + item.count, 0);
   const totalPrice = items.reduce((sum, obj) => {
     return obj.price * obj.count + sum;
   }, 0);
+  const { isAuth, email } = useAuth();
   return (
     <div className="header">
       <div className="container">
@@ -22,8 +26,18 @@ const Header = () => {
             </div>
           </div>
         </Link>
-        {location.pathname !== '/cart' && <Search />}
-        {location.pathname !== '/cart' && (
+        {isAuth == true && location.pathname !== '/cart' && <Search />}
+        {isAuth && (
+          <CiLogout
+            width={18}
+            height={18}
+            className="aaaa"
+            onClick={() => dispatch(removeUser())}
+          ></CiLogout>
+        )}
+
+        <span>{email}</span>
+        {isAuth == true && location.pathname !== '/cart' && (
           <div className="header__cart">
             <Link to="/cart" className="button button--cart">
               <span>{totalPrice} ₽</span>

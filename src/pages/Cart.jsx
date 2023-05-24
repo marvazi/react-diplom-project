@@ -136,9 +136,9 @@ const Cart = () => {
 
                 <span>Вернуться назад</span>
               </Link>
-              <div className="button pay-btn">
+              <button className="button pay-btn">
                 <span>Оплатить сейчас</span>
-              </div>
+              </button>
             </div>
           </div>
         </div>

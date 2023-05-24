@@ -8,13 +8,17 @@ import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
 import Sort from '../components/Sort';
 import Pagination from '../Pagination';
+import useAuth from '../hooks/useAuth';
+import RegisterPage from './RegisterPage';
 
 const Home = () => {
+  // const { isAuth, email } = useAuth();
   const categoryId = useSelector((state) => state.filterSlice.categoryId);
   const sortType = useSelector((state) => state.filterSlice.sortType);
   const currentPage = useSelector((state) => state.filterSlice.currentPage);
   const items = useSelector((state) => state.pizzaSlice.items);
   const dispatch = useDispatch();
+  const { isAuth } = useAuth();
 
   const { searchValue } = useContext(AppContext);
   // const [items, setItems] = useState([]);
@@ -45,7 +49,7 @@ const Home = () => {
       return false;
     })
     .map((obj) => <PizzaBlock {...obj} />);
-  return (
+  return isAuth ? (
     <>
       <div className="container">
         <div className="content__top">
@@ -57,6 +61,8 @@ const Home = () => {
         <Pagination onChangePage={onChangePage} />
       </div>
     </>
+  ) : (
+    <RegisterPage></RegisterPage>
   );
 };
 
