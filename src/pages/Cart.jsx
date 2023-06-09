@@ -7,18 +7,20 @@ import CartEmpty from '../components/CartEmpty';
 const Cart = () => {
   const dispatch = useDispatch();
   const { items } = useSelector(selectCart);
-
+  //Функция для подсчета итоговой суммый в корзине
   const totalItem = items.reduce((sum, item) => sum + item.count, 0);
   const totalPrice = items.reduce((sum, obj) => {
     return obj.price * obj.count + sum;
   }, 0);
-
+  //Функция для удаление товара из корзины
   const onRemoveItem = () => {
     dispatch(clearItems());
   };
+  // Условный рендеринг
   if (!totalPrice) {
     return <CartEmpty />;
   }
+  //Верстка компонента
   return (
     <>
       <div className="container container--cart">
@@ -128,17 +130,19 @@ const Cart = () => {
                   <path
                     d="M7 13L1 6.93015L6.86175 1"
                     stroke="#D3D3D3"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
 
                 <span>Вернуться назад</span>
               </Link>
-              <button className="button pay-btn">
-                <span>Оплатить сейчас</span>
-              </button>
+              <Link to="/order">
+                <button className="button pay-btn">
+                  <span>Оплатить сейчас</span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

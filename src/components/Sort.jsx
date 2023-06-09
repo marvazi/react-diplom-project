@@ -11,10 +11,11 @@ const sort = [
 ];
 const Sort = () => {
   const dispatch = useDispatch();
+  //Обьявляем сосотояние
   const sortType = useSelector(selectFilter);
   const sortRef = useRef();
   const [popup, setPopup] = useState(false);
-
+  // Функциия для сортировки
   const onChangeSort = (obj) => {
     dispatch(setSortType(obj));
     setPopup(false);
@@ -27,6 +28,7 @@ const Sort = () => {
       }
     });
   }, []);
+  //Верстка компонента
   return (
     <div ref={sortRef} className="sort">
       <div className="sort__label">

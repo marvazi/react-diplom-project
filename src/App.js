@@ -11,6 +11,7 @@ import { createContext } from 'react';
 import FullPizza from './pages/FullPizza';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import OrderPage from './pages/OrderPage';
 
 export const AppContext = createContext();
 
@@ -28,6 +29,7 @@ function App() {
               <Route path="/reg" element={<RegisterPage />}></Route>
               <Route path="/login" element={<LoginPage />}></Route>
               <Route path="*" element={<NotFound />} />
+              <Route path="/order" element={<OrderPage />} />
             </Routes>
           </div>
         </div>

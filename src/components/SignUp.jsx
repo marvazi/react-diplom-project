@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
 const SignUp = () => {
+  //Фнкции для добавление в базы данных новых юзеров
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleRegister = (email, password) => {

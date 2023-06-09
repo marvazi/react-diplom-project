@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SignUp from '../components/SignUp';
 
 const RegisterPage = () => {
+  // Верстка компонента
   return (
     <div className="main-div">
       <h1>Регистрация</h1>

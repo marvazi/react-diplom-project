@@ -14,7 +14,7 @@ const CartEmpty = () => {
           Для того, чтобы купить мотор, перейди на главную страницу.
         </p>
         <img src={empty} alt="Empty cart" />
-        <Link class="button button--black" to="/">
+        <Link className="button button--black" to="/">
           <span>Вернуться назад</span>
         </Link>
       </div>

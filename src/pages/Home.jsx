@@ -12,23 +12,26 @@ import useAuth from '../hooks/useAuth';
 import RegisterPage from './RegisterPage';
 
 const Home = () => {
-  // const { isAuth, email } = useAuth();
+  //Достаем все состояние обьявленные в Redux
   const categoryId = useSelector((state) => state.filterSlice.categoryId);
   const sortType = useSelector((state) => state.filterSlice.sortType);
   const currentPage = useSelector((state) => state.filterSlice.currentPage);
   const items = useSelector((state) => state.pizzaSlice.items);
   const dispatch = useDispatch();
+  // Используем наш собсвенный хук
   const { isAuth } = useAuth();
-
+  //Используем контролируемый input
   const { searchValue } = useContext(AppContext);
-  // const [items, setItems] = useState([]);
 
+  // функция для сортировки по категориям
   const onClickCategory = (i) => {
     dispatch(setCategoryId(i));
   };
+  // функция для перемещение по страничкам
   const onChangePage = (num) => {
     dispatch(setCurrentPage(num));
   };
+  //С помощью fetch запроса достаем всем наши товары из удаленного сервера
   const getPizzas = async () => {
     try {
       dispatch(fetchPizzas({ categoryId, sortType, currentPage }));
@@ -40,7 +43,7 @@ const Home = () => {
     getPizzas();
     window.scrollTo(0, 0);
   }, [categoryId, sortType, currentPage]);
-
+  //Полученные товары рендерим на главной старцнице
   const pizzas = items
     .filter((obj) => {
       if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
@@ -48,7 +51,8 @@ const Home = () => {
       }
       return false;
     })
-    .map((obj) => <PizzaBlock {...obj} />);
+    .map((obj, id) => <PizzaBlock key={id} {...obj} />);
+  //Верстка компонента
   return isAuth ? (
     <>
       <div className="container">

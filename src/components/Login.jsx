@@ -6,6 +6,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  //Функции для определение является ли юзер юзером
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = (email, password) => {
